@@ -10,6 +10,10 @@ import ErrorElement from "../pages/ErrorElement/ErrorElement";
 import Register from './../pages/Register/Register';
 import ResetPass from "../pages/ResetPass/ResetPass";
 import PrivateRoutes from "../private/PrivateRoutes";
+import MoreInfo from "../pages/PrivatePage/MoreInfo";
+
+
+
 
 
 
@@ -54,6 +58,13 @@ const router = createBrowserRouter([
             <AddToys />
           </PrivateRoutes>
         ),
+      },
+
+      {
+        path: '/moreDetails',
+        element: <PrivateRoutes>
+                    <MoreInfo/>
+                  </PrivateRoutes>
       },
       {
         path: '/reset_password',
