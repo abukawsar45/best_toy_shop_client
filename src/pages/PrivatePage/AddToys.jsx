@@ -2,8 +2,9 @@ import { Button, Label, Select, TextInput, Textarea } from "flowbite-react";
 import { useContext } from "react";
 import { AuthContext } from "../../Providers/AuthProviders";
 import useTitles from './../../shared/useTitles';
-
+import Swal  from 'sweetalert2';
 const AddToys = () => {
+  
   useTitles('Add Toys |')
   const { user } = useContext(AuthContext)
   console.log(user.email);
@@ -11,27 +12,31 @@ const AddToys = () => {
   const handleAddToysForm = (event) => {
     event.preventDefault();
     const form = event.target;
-    const carName = form.name.value;
+    const carName = form.carName.value;
+    const soldBy = form.soldBy.value;
     const quantity = form.quantity.value
     const category = form.category.value;
+    const made = form.made.value;
     const price = form.price.value;
-    const age = form.age.value;
     const type = form.type.value;
-    const brand = form.brand.value;
+    const age = form.age.value;
+    const image = form.image.value;
     const rating = form.rating.value;
     const description = form.description.value;
-    const soldBy = user?.email;
+    const postBy = form.email.value;
     const carInfo = {
       carName,
+      soldBy,
       quantity,
       category,
       price,
       age,
       type,
       rating,
-      brand,
+      image,
       description,
-      soldBy
+      postBy,
+      made
     }
     console.log(carInfo);
     fetch(`http://localhost:5000/addToys`,{
@@ -42,7 +47,18 @@ const AddToys = () => {
       body: JSON.stringify(carInfo)
     })
       .then(res => res.json())
-      .then(data => console.log(data))
+      .then(data => {
+        console.log(data)
+        if (data?.insertedId)
+        {
+          Swal.fire(
+            'Added Items Successfully',
+            '',
+            'success'
+          );
+          Swal.fire('Added Items Successfully', 'Saved', 'success');
+        }
+      })
       ;
   }
   return (
@@ -52,9 +68,16 @@ const AddToys = () => {
           {/* car name */}
           <div>
             <div className='mb-2 '>
-              <Label htmlFor='name' value='Car Name' />
+              <Label htmlFor='carName' value='Car Name' />
             </div>
-            <TextInput id='name' type='text' name='name' required={true} />
+            <TextInput id='carName' type='text' name='carName' required={true} />
+          </div>
+          {/* seller name */}
+          <div>
+            <div className='mb-2 '>
+              <Label htmlFor='soldBy' value='Seller Name' />
+            </div>
+            <TextInput id='soldBy' type='text' name='soldBy' required={true} />
           </div>
           {/* car quantity */}
           <div>
@@ -76,8 +99,20 @@ const AddToys = () => {
             <Select id='category' name='category' required={true}>
               <option>Gaming</option>
               <option>Defance Force</option>
-              <option>Vehicles</option>
-              <option></option>
+              <option>Normal</option>
+              <option>Others</option>
+            </Select>
+          </div>
+          {/* car made country */}
+          <div id='select'>
+            <div className='mb-2 block'>
+              <Label htmlFor='made' value='Made by' />
+            </div>
+            <Select id='made' name='made' required={true}>
+              <option>China</option>
+              <option>Bangladeshi</option>
+              <option>Others</option>
+              <option>Japan</option>
             </Select>
           </div>
           {/* car price */}
@@ -88,43 +123,71 @@ const AddToys = () => {
             <TextInput id='price' type='text' name='price' required={true} />
           </div>
           {/* car type */}
-          <div>
-            <div className='mb-2 '>
+          <div id='select'>
+            <div className='mb-2 block'>
               <Label htmlFor='type' value='Type' />
             </div>
-            <TextInput id='type' type='text' name='type' required={true} />
+            <Select id='type' name='type' required={true}>
+              <option>Bus</option>
+              <option>Track</option>
+              <option>Private Car</option>
+              <option>Micro Car</option>
+              <option>Speed Car</option>
+            </Select>
           </div>
           {/* baby age */}
-          <div>
-            <div className='mb-2 '>
-              <Label htmlFor='age' value='Baby Age' />
+          <div id='select'>
+            <div className='mb-2 block'>
+              <Label htmlFor='age' value='Age' />
             </div>
-            <TextInput id='age' type='text' name='age' required={true} />
+            <Select id='age' name='age' required={true}>
+              <option>0-2 Years</option>
+              <option>2-6 Years</option>
+              <option>6-12 Years</option>
+            </Select>
           </div>
           {/* car brand */}
           <div>
             <div className='mb-2 '>
-              <Label htmlFor='brand' value='Brand' />
+              <Label htmlFor='image' value='Image URL' />
             </div>
-            <TextInput id='brand' type='text' name='brand' required={true} />
+            <TextInput id='image' type='url' name='image' required={true} />
           </div>
           {/* car rating */}
-          <div>
-            <div className='mb-2 '>
+          <div id='select'>
+            <div className='mb-2 block'>
               <Label htmlFor='rating' value='Rating Star' />
             </div>
-            <TextInput id='rating' type='text' name='rating' required={true} />
+            <Select id='rating' name='rating' required={true}>
+              <option>0</option>
+              <option>1</option>
+              <option>1.5</option>
+              <option>2</option>
+              <option>2.5</option>
+              <option>3</option>
+              <option>3.5</option>
+              <option>4</option>
+              <option>4.5</option>
+              <option>5</option>
+            </Select>
+          </div>
+          {/* seller email */}
+          <div>
+            <div className='mb-2 '>
+              <Label htmlFor='email' value='Seller Email' />
+            </div>
+            <TextInput id='email' type='text' name='email' value={user?.email} />
           </div>
           {/* car description */}
           <div>
             <div className='mb-2 '>
-              <Label htmlFor='description' value='Description' />
+              <Label htmlFor='description' value='Description (optional)' />
             </div>
             <Textarea
               id='description'
               type='text'
               name='description'
-              required={true}
+              
             />
           </div>
         </div>
