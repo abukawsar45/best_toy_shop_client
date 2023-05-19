@@ -76,7 +76,7 @@ const AddToys = () => {
             <Select id='category' name='category' required={true}>
               <option>Gaming</option>
               <option>Defance Force</option>
-              <option></option>
+              <option>Vehicles</option>
               <option></option>
             </Select>
           </div>
