@@ -1,7 +1,7 @@
 import { Button, Label, TextInput } from 'flowbite-react';
 import { useContext, useState } from 'react';
 
-import { Link, Navigate, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from './../../Providers/AuthProviders';
 import useTitles from '../../shared/useTitles';
 
@@ -17,6 +17,9 @@ const Register = () => {
   const [error, setError] = useState('');
   const { signUpWithEmail, loginWithGoogle, updateUserProfile,user,setUser } =
     useContext(AuthContext);
+
+  console.log(user);
+  
   
 
   // console.log(signUpWithEmail);
@@ -35,8 +38,9 @@ const Register = () => {
             setError('');
             setSuccess('Login Successfull');
             form.reset();
-              setUser({ ...user, displayName: name, photo });
-              updateUserProfile(name, photo);
+              setUser({ ...user, displayName: name, photoURL: photo });
+            updateUserProfile(name,photo);
+            console.log(updateUserProfile)
            navigate(from);
         
           })
