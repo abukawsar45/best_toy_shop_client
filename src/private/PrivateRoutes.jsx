@@ -7,17 +7,21 @@ import { Spinner } from "flowbite-react";
 const PrivateRoutes = ({ children }) => {
   const location = useLocation();
   const { user, loading } = useContext(AuthContext);
-  console.log('100000', { loading });
 
-  if (loading){
-    <p>loadinggg...</p>
+  if (loading)
+  {
+    return (
+      <div className='text-center'>
+        <Spinner color='success' aria-label='Success spinner example' />
+      </div>
+    );
   }
   if (user)
   {
     return children
   }
 
-  return <Navigate to='/login' state={{from: location}} replace ></Navigate>
+  return <Navigate to='/login' state={{from: location}} replace />
 };
 
 export default PrivateRoutes;

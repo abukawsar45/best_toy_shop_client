@@ -1,8 +1,8 @@
 import { Avatar, Button, Dropdown, Navbar, Tooltip } from "flowbite-react";
 import { useContext } from "react";
-import { Link } from "react-router-dom";
 import { useSpring, animated } from 'react-spring';
 import { AuthContext } from "../Providers/AuthProviders";
+import ActiveLink from "../pages/ActiveLink/ActiveLink";
 
 
 const Navber = () => {
@@ -32,19 +32,19 @@ const Navber = () => {
     <>
       <Navbar fluid={true} rounded={true}>
         <Navbar.Brand>
-          <Link to='/'>
+          <ActiveLink to='/'>
             <img
               src='https://i.ibb.co/HXRYSmH/logo22.jpg'
               className='mr-1 h-8 sm:h-12'
               alt='best toy shop Logo'
             />
-          </Link>
+          </ActiveLink>
           <span className='self-center whitespace-nowrap text-xl font-semibold dark:text-white'>
             <animated.svg
               className='h-auto w-32 md:w-48 '
               viewBox='0 0 300 100'
             >
-              <Link to='/'>
+              <ActiveLink to='/'>
                 <animated.text
                   x='50%'
                   y='50%'
@@ -56,7 +56,7 @@ const Navber = () => {
                 >
                   BEST TOY SHOP
                 </animated.text>
-              </Link>
+              </ActiveLink>
             </animated.svg>
           </span>
         </Navbar.Brand>
@@ -76,14 +76,14 @@ const Navber = () => {
         </div>
         <Navbar.Collapse>
           <div className='flex flex-col md:flex-row gap-4 md:items-center'>
-            <Link to='/'>Home</Link>
-            <Link to='/allToys'>All Toys</Link>
-            <Link to='/blog'>Blogs</Link>
+            <ActiveLink to='/'>Home</ActiveLink>
+            <ActiveLink to='/allToys'>All Toys</ActiveLink>
+            <ActiveLink to='/blog'>Blogs</ActiveLink>
             {/*  */}
             {user && (
               <>
-                <Link to='/myToys'>My Toys</Link>
-                <Link to='/addToys'>Add Toys</Link>
+                <ActiveLink to='/myToys'>My Toys</ActiveLink>
+                <ActiveLink to='/addToys'>Add Toys</ActiveLink>
                 <Button
                   className='w-20'
                   onClick={handleLogout}
@@ -98,10 +98,10 @@ const Navber = () => {
             {!user && (
               <>
                 <Button>
-                  <Link to='/login'>Log In</Link>
+                  <ActiveLink to='/login'>Log In</ActiveLink>
                 </Button>
                 <Button color='purple'>
-                  <Link to='/register'>Register</Link>
+                  <ActiveLink to='/register'>Register</ActiveLink>
                 </Button>
               </>
             )}

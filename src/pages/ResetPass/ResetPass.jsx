@@ -3,9 +3,11 @@ import React, { useContext, useState } from "react";
 import { AuthContext } from "../../Providers/AuthProviders";
 import { Link } from "react-router-dom";
 import Swal from 'sweetalert2';
+import useTitles from "../../shared/useTitles";
 
 const ResetPass = () => {
 
+  useTitles('Reset Password |')
   const [showModal, setShowModal] = useState(false);
   const [error, setError] = useState('');
 

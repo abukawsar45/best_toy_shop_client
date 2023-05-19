@@ -3,10 +3,12 @@ import { useContext, useState } from 'react';
 
 import { Link, Navigate, useNavigate } from 'react-router-dom';
 import { AuthContext } from './../../Providers/AuthProviders';
+import useTitles from '../../shared/useTitles';
 
 
 
 const Register = () => {
+  useTitles('Register |')
 
     const navigate = useNavigate();
     const from = '/';
