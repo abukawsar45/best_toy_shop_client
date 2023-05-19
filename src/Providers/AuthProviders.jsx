@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState } from "react";
-import { GithubAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from 'firebase/auth'
+import { GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from 'firebase/auth'
 import app from "../firebase/firebase.config";
 
 export const AuthContext = createContext(null);
@@ -10,7 +10,8 @@ const auth = getAuth(app);
 const AuthProviders = ({children}) => {
 
   const [user, setUser] = useState('');
-  const [loading, setLoading] = useState('');
+ const [loading, setLoading] = useState(true)
+  console.log(loading)
 
   const googleProvider =new GoogleAuthProvider();
   
@@ -24,34 +25,33 @@ const AuthProviders = ({children}) => {
      return createUserWithEmailAndPassword(auth, email, password);
    };
 
-   const loginEmailAndPassword = (email, password) => {
+   const loginWithEmailAndPassword = (email, password) => {
      setLoading(true);
      return signInWithEmailAndPassword(auth, email, password);
    };
-   const resetPassword = (email) => {
+  const resetPassword = (email) => {
+     setLoading(true)
      return sendPasswordResetEmail(auth, email);
    };
 
-   const githubProvider = new GithubAuthProvider();
-   const loginWithGithub = () => {
-     setLoading(true);
-     return signInWithPopup(auth, githubProvider);
-   };
 
    useEffect(() => {
      const unSubscribe = onAuthStateChanged(auth, (loggedInUser) => {
        setUser(loggedInUser);
-       setLoading(false);
+       console.log('11111',loading)
+       setLoading(false)
+       console.log('2222',loading)
      });
      return () => {
-       unSubscribe();
+      return unSubscribe();
      };
    }, []);
 
-   const updateUserProfile = (name, photoUrl) => {
+  const updateUserProfile = (name, photo) => {
+    
      return updateProfile(auth.currentUser, {
        displayName: name,
-       photoURL: photoUrl,
+       photoURL: photo,
      });
    };
   
@@ -68,10 +68,9 @@ const AuthProviders = ({children}) => {
     loginWithGoogle,
     updateUserProfile,
     signUpWithEmail,
-    loginWithGithub,
-    loginEmailAndPassword,
+    loginWithEmailAndPassword,
     logout,
-    passwordReset: resetPassword,
+    resetPassword,
   };
 
   return (

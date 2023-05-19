@@ -3,28 +3,27 @@ import { FaFacebook, FaTwitter, FaGithub, FaInstagram } from 'react-icons/fa';
 
 const FooterSection = () => {
   return (
-    <div className=" ">
-      <Footer container={true}>
-        <div className='w-full'>
-          <div className='w-full justify-between sm:flex sm:justify-between md:flex md:grid-cols-1'>
-            <div className="flex  flex-col md:flex-row my-4 md:my-0 justify-start md:items-center">
-              <Footer.Brand
-                  
-            src='https://i.ibb.co/HXRYSmH/logo22.jpg'
-            className='w-2/4 md:w-3/4 h-auto'
-                alt='Flowbite Logo'
-              />
-              <h3 className="text-2xl font-extrabold md:text-3xl font-bold">Best Toys Shop</h3>
-            </div>
-            <div className='grid grid-cols-1 gap-8 sm:mt-4 sm:grid-cols-3 sm:gap-6'>
+    <div className=' '>
+      <Footer container={true} className="mx-auto bg-slate-200">
+        <div className='w-full mx-auto'>
+          <div>
+            <div className='grid grid-cols-1 gap-8 sm:mt-4 md:grid-cols-4 sm:gap-6'>
+              <div className=' my-4 md:my-0 justify-start md:items-center'>
+                <Footer.Brand
+                  src='https://i.ibb.co/HXRYSmH/logo22.jpg'
+                  className='w-2/4 md:w-2/4 h-auto rounded'
+                  alt='best toys shop logo'
+                />
+               
+              </div>
               <div>
                 <Footer.Title title='about' />
                 <Footer.LinkGroup col={true}>
                   <Footer.Link href='#'>
-                    <span className='font-bold'>Head Office:</span>Dhaka,Bonani
+                    <span className='font-bold'>Head Office: </span>Dhaka,Bonani
                   </Footer.Link>
                   <Footer.Link href='#'>
-                    <span className='font-bold'>Branch:</span> Uttara,1
+                    <span className='font-bold'>Branch:</span> Uttara 1
                     <br />
                     <br />
                     Dhaka,Bangladesh
