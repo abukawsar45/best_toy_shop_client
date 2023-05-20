@@ -121,7 +121,7 @@ const AddToys = () => {
               <optgroup label='Defense Force'>
                 <option>Police</option>
                 <option>RAB</option>
-                <option>Fire Trucks</option>
+                <option>Fire Service</option>
               </optgroup>
             </Select>
           </div>

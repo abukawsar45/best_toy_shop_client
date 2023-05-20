@@ -1,6 +1,7 @@
 import { Button, Card } from "flowbite-react";
 import { useEffect, useState } from "react";
 import { useLoaderData } from "react-router-dom";
+import ReactStarsRating from 'react-awesome-stars-rating';
 
 const MoreDetails = () => {
   const toyData = useLoaderData();
@@ -56,8 +57,11 @@ const MoreDetails = () => {
               <small> Made by </small>
               {made}
             </p>
-            <p className='text-xl md:text-2xl mb-2 md:mb-0 text-red-700'>
-              <small> Rating</small> : {rating}
+            <p className='text-xl md:text-2xl flex  mb-2 md:mb-0 text-red-700'>
+              <div className='flex items-center'>
+                <small> Rating</small> : &#160; <ReactStarsRating  value={rating} className="flex flex-row " />
+                
+              </div>
             </p>
           </div>
         </div>
