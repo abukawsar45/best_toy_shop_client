@@ -14,9 +14,7 @@ const MyToys = () => {
   },[])
   return (
     <div>
-      <div>
-        
-     </div>
+      my toys
     </div>
   );
 };

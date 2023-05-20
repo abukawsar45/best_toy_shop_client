@@ -10,7 +10,8 @@ import ErrorElement from "../pages/ErrorElement/ErrorElement";
 import Register from './../pages/Register/Register';
 import ResetPass from "../pages/ResetPass/ResetPass";
 import PrivateRoutes from "../private/PrivateRoutes";
-import MoreInfo from "../pages/PrivatePage/MoreInfo";
+import MoreDetails from "../pages/PrivatePage/MoreDetails";
+
 
 
 
@@ -61,10 +62,11 @@ const router = createBrowserRouter([
       },
 
       {
-        path: '/moreDetails',
+        path: '/moreDetails/:id',
         element: <PrivateRoutes>
-                    <MoreInfo/>
-                  </PrivateRoutes>
+                    <MoreDetails/>
+        </PrivateRoutes>,
+        loader: ({ params})=> fetch(`http://localhost:5000/alltoys/${params.id}`)
       },
       {
         path: '/reset_password',

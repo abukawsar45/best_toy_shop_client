@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import useTitles from "../../shared/useTitles";
-import CarCard from "./CarCard";
+import CarRow from "./CarRow";
+import { Table } from "flowbite-react";
 
 
 const AllToys = () => {
@@ -20,16 +21,40 @@ const AllToys = () => {
 
   
   return (
-    <div className='grid grid-cols-12'>
-      <div className='col-span-12 md:col-span-2 bg-zinc-500'>amar</div>
-      <div className='col-span-12 md:col-span-10'>
-        <div className='md:mx-4 grid grid-cosl-1 md:grid-cols-3 gap-x-2 md:gap-x-8'>
-          {toysData.map((toy) =><CarCard key={toy._id} toy={toy} />
-          
-          )}
-        </div>
+    <div>
+
+      <div>
+        div
       </div>
+      <Table striped={true}>
+        <Table.Head>
+          <Table.HeadCell className="font-sans text-violet-600">Car name</Table.HeadCell>
+          <Table.HeadCell className="font-sans text-violet-600">Price</Table.HeadCell>
+          <Table.HeadCell className="font-sans text-violet-600">Seller</Table.HeadCell>
+          <Table.HeadCell className="font-sans text-violet-600">Quantiy</Table.HeadCell>
+          <Table.HeadCell className="font-sans text-violet-600">Category</Table.HeadCell>
+          <Table.HeadCell className="font-sans text-violet-600">type</Table.HeadCell>
+          <Table.HeadCell className="font-sans text-violet-600">
+            <span className='sr-only'>Edit</span>
+          </Table.HeadCell>
+        </Table.Head>
+        <Table.Body className='divide-y'>
+         
+          { toysData.map((toy) => <CarRow key={ toy._id } toy={ toy } />) }
+          
+        </Table.Body>
+      </Table>
     </div>
+    // <div className='grid grid-cols-12'>
+    //   <div className='col-span-12 md:col-span-2 bg-zinc-500'>amar</div>
+    //   <div className='col-span-12 md:col-span-10'>
+    //     <div className='md:mx-4 grid grid-cosl-1 md:grid-cols-3 gap-x-2 md:gap-x-8'>
+    //       {toysData.map((toy) =><CarCard key={toy._id} toy={toy} />
+
+    //       )}
+    //     </div>
+    //   </div>
+    // </div>
   );
 };
 

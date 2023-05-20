@@ -3,6 +3,7 @@ import { useContext } from "react";
 import { useSpring, animated } from 'react-spring';
 import { AuthContext } from "../Providers/AuthProviders";
 import ActiveLink from "../pages/ActiveLink/ActiveLink";
+import { Link } from "react-router-dom";
 
 
 const Navber = () => {
@@ -44,19 +45,19 @@ const Navber = () => {
               className='h-auto w-32 md:w-48 '
               viewBox='0 0 300 100'
             >
-              <ActiveLink to='/'>
+              <Link to='/'>
                 <animated.text
                   x='50%'
                   y='50%'
                   textAnchor='middle'
                   dominantBaseline='middle'
                   style={animationProps}
-                  className='text-4xl'
+                  className='text-2xl'
                   fontWeight='bold'
                 >
                   BEST TOY SHOP
                 </animated.text>
-              </ActiveLink>
+              </Link>
             </animated.svg>
           </span>
         </Navbar.Brand>
@@ -76,14 +77,14 @@ const Navber = () => {
         </div>
         <Navbar.Collapse>
           <div className='flex flex-col md:flex-row gap-4 md:items-center'>
-            <ActiveLink to='/'>Home</ActiveLink>
-            <ActiveLink to='/allToys'>All Toys</ActiveLink>
-            <ActiveLink to='/blog'>Blogs</ActiveLink>
+            <ActiveLink className=''  to='/'>Home</ActiveLink>
+            <ActiveLink  className='' to='/allToys'>All Toys</ActiveLink>
+            <ActiveLink  className='' to='/blog'>Blogs</ActiveLink>
             {/*  */}
             {user && (
               <>
-                <ActiveLink to='/myToys'>My Toys</ActiveLink>
-                <ActiveLink to='/addToys'>Add Toys</ActiveLink>
+                <ActiveLink  className='' to='/myToys'>My Toys</ActiveLink>
+                <ActiveLink  className='' to='/addToys'>Add Toys</ActiveLink>
                 <Button
                   className='w-20'
                   onClick={handleLogout}

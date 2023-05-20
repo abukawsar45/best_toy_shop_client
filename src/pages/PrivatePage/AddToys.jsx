@@ -16,10 +16,10 @@ const AddToys = () => {
     const soldBy = form.soldBy.value;
     const quantity = form.quantity.value
     const category = form.category.value;
+    const subCategory = form.subCategory.value;
     const made = form.made.value;
     const price = form.price.value;
     const type = form.type.value;
-    const age = form.age.value;
     const image = form.image.value;
     const rating = form.rating.value;
     const description = form.description.value;
@@ -29,8 +29,8 @@ const AddToys = () => {
       soldBy,
       quantity,
       category,
+      subCategory,
       price,
-      age,
       type,
       rating,
       image,
@@ -49,14 +49,9 @@ const AddToys = () => {
       .then(res => res.json())
       .then(data => {
         console.log(data)
-        if (data?.insertedId)
-        {
-          Swal.fire(
-            'Added Items Successfully',
-            '',
-            'success'
-          );
+        if (data?.insertedId) {
           Swal.fire('Added Items Successfully', 'Saved', 'success');
+          // form.reset();
         }
       })
       ;
@@ -70,7 +65,12 @@ const AddToys = () => {
             <div className='mb-2 '>
               <Label htmlFor='carName' value='Car Name' />
             </div>
-            <TextInput id='carName' type='text' name='carName' required={true} />
+            <TextInput
+              id='carName'
+              type='text'
+              name='carName'
+              required={true}
+            />
           </div>
           {/* seller name */}
           <div>
@@ -97,10 +97,32 @@ const AddToys = () => {
               <Label htmlFor='category' value='Select Category' />
             </div>
             <Select id='category' name='category' required={true}>
-              <option>Gaming</option>
+              <option>Super car</option>
+              <option>Racing car</option>
               <option>Defance Force</option>
-              <option>Normal</option>
-              <option>Others</option>
+            </Select>
+          </div> 
+          {/* car category */}
+          <div id='select'>
+            <div className='mb-2 block'>
+              <Label htmlFor='sub-category' value='Select Sub Category' />
+            </div>
+            <Select id='subCategory' name='subCategory' required={true}>
+              <optgroup label='Supercars'>
+                <option>American Supercars</option>
+                <option>German Supercars</option>
+                <option>Hypercars</option>
+              </optgroup>
+              <optgroup label='Racing'>
+                <option>Rally Cars</option>
+                <option>Drag Racing Cars</option>
+                <option>Touring Cars</option>
+              </optgroup>
+              <optgroup label='Defense Force'>
+                <option>Police</option>
+                <option>RAB</option>
+                <option>Fire Trucks</option>
+              </optgroup>
             </Select>
           </div>
           {/* car made country */}
@@ -128,22 +150,8 @@ const AddToys = () => {
               <Label htmlFor='type' value='Type' />
             </div>
             <Select id='type' name='type' required={true}>
-              <option>Bus</option>
-              <option>Track</option>
-              <option>Private Car</option>
-              <option>Micro Car</option>
-              <option>Speed Car</option>
-            </Select>
-          </div>
-          {/* baby age */}
-          <div id='select'>
-            <div className='mb-2 block'>
-              <Label htmlFor='age' value='Age' />
-            </div>
-            <Select id='age' name='age' required={true}>
-              <option>0-2 Years</option>
-              <option>2-6 Years</option>
-              <option>6-12 Years</option>
+              <option>Remote Control</option>
+              <option>No Remote Control</option>
             </Select>
           </div>
           {/* car brand */}
@@ -176,23 +184,23 @@ const AddToys = () => {
             <div className='mb-2 '>
               <Label htmlFor='email' value='Seller Email' />
             </div>
-            <TextInput id='email' type='text' name='email' value={user?.email} />
+            <TextInput
+              id='email'
+              type='text'
+              name='email'
+              value={user?.email}
+            />
           </div>
           {/* car description */}
           <div>
             <div className='mb-2 '>
               <Label htmlFor='description' value='Description (optional)' />
             </div>
-            <Textarea
-              id='description'
-              type='text'
-              name='description'
-              
-            />
+            <Textarea id='description' type='text' name='description' />
           </div>
         </div>
 
-        <Button type='ADD TOYS'>Login</Button>
+        <Button type='submit'>ADD TOYS</Button>
       </form>
     </div>
   );
