@@ -8,7 +8,7 @@ const EditToysData = () => {
   const { user } = useContext(AuthContext)
   const getData = useLoaderData();
   console.log(getData)
-  const { carName, soldBy, quantity, category, subCategory, price, type, rating, image, description, postBy, made } = getData;
+  const { _id,carName, soldBy, quantity, category, subCategory, price, type, rating, image, description, postBy, made } = getData;
 
   const handleEditToysForm = (event) => {
     event.preventDefault();
@@ -25,7 +25,7 @@ const EditToysData = () => {
     const rating = form.rating.value;
     const description = form.description.value;
     const postBy = form.email.value;
-    const carInfo = {
+    const updateInfo = {
       carName,
       soldBy,
       quantity,
@@ -39,20 +39,32 @@ const EditToysData = () => {
       postBy,
       made,
     };
-    console.log(carInfo);
-    fetch(`http://localhost:5000/addToys`, {
-      method: '',
+    console.log(updateInfo);
+    fetch(`http://localhost:5000/myToys/${_id}`, {
+      method: 'PUT',
       headers: {
         'content-type': 'application/json',
       },
-      body: JSON.stringify(carInfo),
+      body: JSON.stringify(updateInfo),
     })
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        if (data?.insertedId) {
-          Swal.fire('Added Items Successfully', 'Saved', 'success');
+        if (data?.modifiedCount > 0) {
+          Swal.fire('Updated Successfully', 'Saved', 'success');
           // form.reset();
+        }
+        else
+        {
+          Swal.fire({
+            title: 'Already Updated',
+            showClass: {
+              popup: 'animate__animated animate__fadeInDown',
+            },
+            hideClass: {
+              popup: 'animate__animated animate__fadeOutUp',
+            },
+          });
         }
       });
   };
@@ -111,9 +123,9 @@ const EditToysData = () => {
               defaultValue={category}
               required={true}
             >
-              <option>Super car</option>
-              <option>Racing car</option>
-              <option>Defance Force</option>
+              <option>Super</option>
+              <option>Racing</option>
+              <option>Defance</option>
             </Select>
           </div>
           {/* car category */}
@@ -241,7 +253,7 @@ const EditToysData = () => {
           </div>
         </div>
 
-        <Button type='submit'>EDIT TOYS</Button>
+        <Button type='submit'>UPDATE TOYS</Button>
       </form>
     </div>
   );

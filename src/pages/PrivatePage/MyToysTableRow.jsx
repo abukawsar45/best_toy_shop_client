@@ -2,11 +2,12 @@ import { Button, Table } from "flowbite-react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProviders";
 import { useContext } from "react";
+import { AiFillDelete } from 'react-icons/ai';
 
-const MyCarTable = ({toy}) => {
-  const {user} = useContext(AuthContext)
-  const  {
-  _id,
+const MyToysTableRow = ({ toy, handleRemove }) => {
+  const { user } = useContext(AuthContext);
+  const {
+    _id,
     carName,
     soldBy,
     quantity,
@@ -26,10 +27,16 @@ const MyCarTable = ({toy}) => {
         {' '}
         <Table.Row className='bg-white dark:border-gray-700 dark:bg-gray-800'>
           <Table.Cell className='whitespace-nowrap font-medium text-gray-900 dark:text-white'>
+            <AiFillDelete
+              onClick={() => handleRemove(_id)}
+              className='w-6 h-6 cursor-pointer text-red-500 hover:text-red-700 '
+            />
+          </Table.Cell>
+          <Table.Cell className='whitespace-nowrap font-medium text-gray-900 dark:text-white'>
             {carName}
           </Table.Cell>
           <Table.Cell>
-            <img src={image} className="w-20  md:" alt='' />
+            <img src={image} className='w-20  md:' alt='' />
           </Table.Cell>
           <Table.Cell>{price} taka</Table.Cell>
           <Table.Cell>{soldBy}</Table.Cell>
@@ -50,4 +57,4 @@ const MyCarTable = ({toy}) => {
   );
 };
 
-export default MyCarTable;
+export default MyToysTableRow;
