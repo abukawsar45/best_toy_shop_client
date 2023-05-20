@@ -7,7 +7,7 @@ import useTitles from "../../shared/useTitles";
 
 const ResetPass = () => {
 
-  useTitles('Reset Password |')
+  useTitles('| Reset Password');
   const [showModal, setShowModal] = useState(false);
   const [error, setError] = useState('');
 

@@ -3,8 +3,10 @@ import { useContext } from 'react';
 import Swal from 'sweetalert2';
 import { AuthContext } from '../../Providers/AuthProviders';
 import { useLoaderData } from 'react-router-dom';
+import useTitles from '../../shared/useTitles';
 
 const EditToysData = () => {
+  useTitles('| Edit Toys')
   const { user } = useContext(AuthContext)
   const getData = useLoaderData();
   console.log(getData)

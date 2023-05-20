@@ -2,8 +2,10 @@ import { Button, Card } from "flowbite-react";
 import { useEffect, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import ReactStarsRating from 'react-awesome-stars-rating';
+import useTitles from "../../shared/useTitles";
 
 const MoreDetails = () => {
+  useTitles('| Toy Details');
   const toyData = useLoaderData();
   console.log({toyData})
   const { _id, carName, soldBy, quantity, category, subCategory, price, type, rating, image, description, postBy, made} = toyData || [];

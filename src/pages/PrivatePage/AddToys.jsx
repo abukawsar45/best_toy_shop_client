@@ -5,7 +5,7 @@ import useTitles from './../../shared/useTitles';
 import Swal  from 'sweetalert2';
 const AddToys = () => {
   
-  useTitles('Add Toys |')
+  useTitles('| Add Toys');
   const { user } = useContext(AuthContext)
   console.log(user.email);
 

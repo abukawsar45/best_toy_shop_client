@@ -1,7 +1,7 @@
 import useTitles from '../../shared/useTitles';
 
 const Blog = () => {
-  useTitles('Blog |');
+  useTitles('| Blog');
   return (
     <div className='bg-gray-300'>
       <div>

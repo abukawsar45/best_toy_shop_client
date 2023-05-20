@@ -8,7 +8,7 @@ import Swal from "sweetalert2";
 const MyToys = () => {
   const { user } = useContext(AuthContext);
   const [myPostToys, setMyPostToys] = useState([])
-  useTitles('My Toys |')
+  useTitles('| My Toys');
   useEffect(() => {
     fetch(`http://localhost:5000/mytoys/${user?.email}`)
       .then(res => res.json())

@@ -6,7 +6,7 @@ import Swal from 'sweetalert2';
 import { AuthContext } from "../../Providers/AuthProviders";
 
 const AllToys = () => {
-  useTitles('All Toys');
+  useTitles('| All Toys');
   const {user} =useContext(AuthContext)
   const [toysData, setToysData] = useState([]);
   

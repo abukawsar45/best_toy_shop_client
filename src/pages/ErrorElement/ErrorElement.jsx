@@ -1,7 +1,9 @@
 import { Button } from "flowbite-react";
 import { Link } from "react-router-dom";
+import useTitles from "../../shared/useTitles";
 
 const ErrorElement = () => {
+  useTitles('| ERROR')
   return (
     <div className="mx-auto">
       <div>

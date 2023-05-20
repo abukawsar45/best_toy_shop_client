@@ -8,7 +8,7 @@ import useTitles from '../../shared/useTitles';
 
 
 const Register = () => {
-  useTitles('Register |')
+  useTitles('| Register');
 
     const navigate = useNavigate();
     const from = '/';
