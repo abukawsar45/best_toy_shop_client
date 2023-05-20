@@ -1,12 +1,24 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import useTitles from "../../shared/useTitles";
 import CarRow from "./CarRow";
 import { Table } from "flowbite-react";
-
+import Swal from 'sweetalert2';
+import { AuthContext } from "../../Providers/AuthProviders";
 
 const AllToys = () => {
   useTitles('All Toys');
+  const {user} =useContext(AuthContext)
   const [toysData, setToysData] = useState([]);
+  
+  const handleMoreBtn = () => {
+    if (!user) {
+      return ( Swal.fire(
+        'Without a login?',
+        'You can not visit the single toy details page',
+        'error'
+        ))
+      }
+  }
 
   useEffect(() => {
     fetch('http://localhost:5000/alltoys')
@@ -21,27 +33,37 @@ const AllToys = () => {
 
   
   return (
-    <div>
 
-      <div>
-        div
-      </div>
+    <div>
+      <div></div>
       <Table striped={true}>
         <Table.Head>
-          <Table.HeadCell className="font-sans text-violet-600">Car name</Table.HeadCell>
-          <Table.HeadCell className="font-sans text-violet-600">Price</Table.HeadCell>
-          <Table.HeadCell className="font-sans text-violet-600">Seller</Table.HeadCell>
-          <Table.HeadCell className="font-sans text-violet-600">Quantiy</Table.HeadCell>
-          <Table.HeadCell className="font-sans text-violet-600">Category</Table.HeadCell>
-          <Table.HeadCell className="font-sans text-violet-600">type</Table.HeadCell>
-          <Table.HeadCell className="font-sans text-violet-600">
+          <Table.HeadCell className='font-sans text-violet-600'>
+            Car name
+          </Table.HeadCell>
+          <Table.HeadCell className='font-sans text-violet-600'>
+            Price
+          </Table.HeadCell>
+          <Table.HeadCell className='font-sans text-violet-600'>
+            Seller
+          </Table.HeadCell>
+          <Table.HeadCell className='font-sans text-violet-600'>
+            Quantiy
+          </Table.HeadCell>
+          <Table.HeadCell className='font-sans text-violet-600'>
+            Category
+          </Table.HeadCell>
+          <Table.HeadCell className='font-sans text-violet-600'>
+            type
+          </Table.HeadCell>
+          <Table.HeadCell className='font-sans text-violet-600'>
             <span className='sr-only'>Edit</span>
           </Table.HeadCell>
         </Table.Head>
         <Table.Body className='divide-y'>
-         
-          { toysData.map((toy) => <CarRow key={ toy._id } toy={ toy } />) }
-          
+          {toysData.map((toy) => (
+            <CarRow key={toy._id} toy={toy} handleMoreBtn={handleMoreBtn} />
+          ))}
         </Table.Body>
       </Table>
     </div>

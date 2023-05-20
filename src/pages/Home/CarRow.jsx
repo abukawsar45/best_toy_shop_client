@@ -5,8 +5,8 @@ import { Button, Table } from "flowbite-react";
 import { Link } from "react-router-dom";
 
 
-const CarCard = ({toy}) => {
-  console.log(toy)
+const CarCard = ({ toy, handleMoreBtn }) => {
+  console.log({toy});
   const {
     _id,
     carName,
@@ -21,7 +21,7 @@ const CarCard = ({toy}) => {
     description,
     postBy,
     made,
-  } = toy || [];
+  } = toy || {};
   return (
     <>
       {' '}
@@ -37,9 +37,7 @@ const CarCard = ({toy}) => {
 
         <Table.Cell>
           <Link to={`/moreDetails/${_id}`}>
-          <Button>
-              More
-          </Button>
+            <Button onClick={handleMoreBtn}>More</Button>
           </Link>
         </Table.Cell>
       </Table.Row>

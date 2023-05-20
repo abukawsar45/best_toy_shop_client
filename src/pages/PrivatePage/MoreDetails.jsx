@@ -4,19 +4,27 @@ import { useLoaderData } from "react-router-dom";
 
 const MoreDetails = () => {
   const toyData = useLoaderData();
+  console.log({toyData})
   const { _id, carName, soldBy, quantity, category, subCategory, price, type, rating, image, description, postBy, made} = toyData || [];
 
 
   return (
     <div>
       <Card>
-        <div className='text-center relative'>
+        <div className='text-center md:relative'>
           <img
             src={image}
             alt=''
-            className='w-3/4 md:w-2/4 mx-auto my-2 md:my-6'
+            className='w-3/4 md:h-96 md:w-auto object-cover mx-auto my-2 md:my-6'
           />
-          <Button className='absolute top-5 right-5'>Buy Now</Button>
+          <Button className='absolute hidden md:block md:top-5 md:right-5 px-4 py-3'>
+            <span className='text-3xl'>Buy Now</span>
+          </Button>
+        </div>
+        <div>
+          <Button className='w-full block md:hidden px-4 py-3'>
+            <span className='text-3xl'>Buy Now</span>
+          </Button>
         </div>
         <div className='bg-slate-100 mx-2 md:px-4 my-2 md:py-4'>
           <div className='grid grid-cols-1 px-2 md:grid-cols-2 md:mb-4 mt-2 md:mt-4'>

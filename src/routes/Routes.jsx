@@ -11,6 +11,7 @@ import Register from './../pages/Register/Register';
 import ResetPass from "../pages/ResetPass/ResetPass";
 import PrivateRoutes from "../private/PrivateRoutes";
 import MoreDetails from "../pages/PrivatePage/MoreDetails";
+import EditToysData from "../pages/PrivatePage/EditToysData";
 
 
 
@@ -60,13 +61,21 @@ const router = createBrowserRouter([
           </PrivateRoutes>
         ),
       },
+      {
+        path: '/myAllToys/:id',
+        element: <EditToysData />,
+        loader: ({ params }) => fetch(`http://localhost:5000/alltoys/${params.id}`),
+      },
 
       {
         path: '/moreDetails/:id',
-        element: <PrivateRoutes>
-                    <MoreDetails/>
-        </PrivateRoutes>,
-        loader: ({ params})=> fetch(`http://localhost:5000/alltoys/${params.id}`)
+        element: (
+          <PrivateRoutes>
+            <MoreDetails />
+          </PrivateRoutes>
+        ),
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/alltoys/${params.id}`),
       },
       {
         path: '/reset_password',
