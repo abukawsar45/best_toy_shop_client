@@ -24,7 +24,7 @@ const MyTabs = () => {
         setToysDataCollection(data);
       });
   }, [toysData]);
-  console.log(toysDataCollection);
+  // console.log(toysDataCollection);
   const handleMoreBtn = () => {
     if (!user) {
       return Swal.fire(

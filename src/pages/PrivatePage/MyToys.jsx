@@ -20,14 +20,16 @@ const { user } = useContext(AuthContext);
 const [myPostToys, setMyPostToys] = useState([]);
 useTitles('| My Toys');
 useEffect(() => {
-  fetch(`https://y-umber-three.vercel.app/myToys/${user?.email}?sortBy=${activeMode}`)
+  fetch(
+    `https://y-umber-three.vercel.app/myToys/${user?.email}?sortBy=${activeMode}`
+  )
     .then((res) => res.json())
     .then((data) => {
-      console.log(data);
+      // console.log(data);
       setMyPostToys(data);
     })
     .catch((error) => {
-      console.error(error);
+      // console.error(error);
     });
 }, [activeMode]);  
   
@@ -49,18 +51,12 @@ useEffect(() => {
         })
           .then((res) => res.json())
           .then((data) => {
-            console.log(data);
-            console.log(id);
+            // console.log(data);
+            // console.log(id);
             const remaining = myPostToys.filter((toy) => toy._id !== id);
             setMyPostToys(remaining);
-            if (data.deletedCount > 0)
-            {
-              Swal.fire(
-                'Deleted!',
-                'Your file has been deleted.',
-                'success'
-              );
-
+            if (data.deletedCount > 0) {
+              Swal.fire('Deleted!', 'Your file has been deleted.', 'success');
             }
           });
       

@@ -11,6 +11,7 @@ const AllToys = () => {
   const {user} =useContext(AuthContext)
   const [toysData, setToysData] = useState([]);
   
+  
   const handleMoreBtn = () => {
     if (!user) {
       return ( Swal.fire(
@@ -22,14 +23,14 @@ const AllToys = () => {
   }
 
   useEffect(() => {
-    fetch('http://localhost:5000/allToysWithLimit')
+    fetch('https://y-umber-three.vercel.app/allToysWithLimit')
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         setToysData(data);
       });
   }, [])
-  console.log(toysData)
+  // console.log(toysData)
   
 
   

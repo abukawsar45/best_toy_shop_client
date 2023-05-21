@@ -6,11 +6,25 @@ import { useLoaderData } from 'react-router-dom';
 import useTitles from '../../shared/useTitles';
 
 const EditToysData = () => {
-  useTitles('| Edit Toys')
-  const { user } = useContext(AuthContext)
+  useTitles('| Edit Toys');
+  const { user } = useContext(AuthContext);
   const getData = useLoaderData();
-  console.log(getData)
-  const { _id,carName, soldBy, quantity, category, subCategory, price, type, rating, image, description, postBy, made } = getData;
+  console.log(getData);
+  const {
+    _id,
+    carName,
+    soldBy,
+    quantity,
+    category,
+    subCategory,
+    price,
+    type,
+    rating,
+    image,
+    description,
+    postBy,
+    made,
+  } = getData;
 
   const handleEditToysForm = (event) => {
     event.preventDefault();
@@ -55,9 +69,7 @@ const EditToysData = () => {
         if (data?.modifiedCount > 0) {
           Swal.fire('Updated Successfully', 'Saved', 'success');
           // form.reset();
-        }
-        else
-        {
+        } else {
           Swal.fire({
             title: 'Already Updated',
             showClass: {
