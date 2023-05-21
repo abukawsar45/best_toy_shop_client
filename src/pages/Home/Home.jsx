@@ -1,11 +1,11 @@
 import  { useEffect } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import Category from './Category';
 import ImageCard from './ImageGallery';
 import MainCarousel from './MainCarousel';
 import SupportPart from './SupportPart';
 import useTitles from '../../shared/useTitles';
+import MyTabs from './MyTabs';
 
 
 
@@ -17,11 +17,9 @@ const Home = () => {
   }, []);
   return (
     <div className='min-h-fit' data-aos='fade-in'>
-
-
-
       <MainCarousel />
-      <Category />
+      <MyTabs/>
+      
       <ImageCard />
       <SupportPart />
     </div>

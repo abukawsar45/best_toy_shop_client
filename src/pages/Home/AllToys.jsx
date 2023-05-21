@@ -21,11 +21,11 @@ const AllToys = () => {
   }
 
   useEffect(() => {
-    fetch('http://localhost:5000/alltoys')
+    fetch('http://localhost:5000/allToysWithLimit')
       .then((res) => res.json())
-      .then(data => {
-        console.log(data)
-        setToysData(data)
+      .then((data) => {
+        console.log(data);
+        setToysData(data);
       });
   }, [])
   console.log(toysData)

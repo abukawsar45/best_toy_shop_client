@@ -2,19 +2,31 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 
 import { Dropdown } from 'flowbite-react';
-import { useState } from 'react';
-
+import { useEffect, useState } from 'react';
 
 
 
 const MyTabs = () => {
+
+    const [toysData, setToysData] = useState('abcd');
+    const [toysDataCollection, setToysDataCollection] = useState([]);
   const [activeMode, setActiveMode] = useState('assending');
   const handleAssendingTab = (tabName) => {
     setActiveMode(tabName);
   };
+  useEffect(() => {
+    fetch(`http://localhost:5000/subcategoryName/${toysData}`)
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setToysDataCollection(data);
+        
+      });
+  }, [toysData]);
 
+  console.log(toysDataCollection)
   return (
-    <div className='relative'>
+    <div className='relative my-2'>
       <Tabs>
         <TabList>
           <Tab>Category</Tab>
@@ -51,19 +63,64 @@ const MyTabs = () => {
           <h2 className='hover:bg-sky-400'>ALL CATEGORY</h2>
         </TabPanel>
         <TabPanel>
-          <h2 className='hover:bg-sky-400'>American</h2>
-          <h2 className='hover:bg-sky-400'>German</h2>
-          <h2 className='hover:bg-sky-400'>Hyper</h2>
+          <h2
+            onClick={() => setToysData('American')}
+            className='hover:bg-sky-400'
+          >
+            American Supercars
+          </h2>
+          <h2
+            onClick={() => setToysData('German')}
+            className='hover:bg-sky-400'
+          >
+            German Supercars
+          </h2>
+          <h2
+            onClick={() => setToysData('Hyper')}
+            className='hover:bg-sky-400'
+          >
+            Hyper Supercars
+          </h2>
         </TabPanel>
         <TabPanel>
-          <h2 className='hover:bg-sky-400'>Rally</h2>
-          <h2 className='hover:bg-sky-400'>Drag racing</h2>
-          <h2 className='hover:bg-sky-400'>Touring</h2>
+          <h2
+            onClick={() => setToysData('Rally Racing')}
+            className='hover:bg-sky-400'
+          >
+            Rally Racing
+          </h2>
+          <h2
+            onClick={() => setToysData('Drag Racing')}
+            className='hover:bg-sky-400'
+          >
+            Drag Racing
+          </h2>
+          <h2
+            onClick={() => setToysData('Touring')}
+            className='hover:bg-sky-400'
+          >
+            Touring Racing
+          </h2>
         </TabPanel>
         <TabPanel>
-          <h2 className='hover:bg-sky-400'>Police</h2>
-          <h2 className='hover:bg-sky-400'>RAB</h2>
-          <h2 className='hover:bg-sky-400'>Fire Service</h2>
+          <h2
+            onClick={() => setToysData('Police')}
+            className='hover:bg-sky-400'
+          >
+            Police
+          </h2>
+          <h2
+            onClick={() => setToysData('RAB')}
+            className='hover:bg-sky-400'
+          >
+            RAB
+          </h2>
+          <h2
+            onClick={() => setToysData('FireService')}
+            className='hover:bg-sky-400'
+          >
+            Fire Service
+          </h2>
         </TabPanel>
       </Tabs>
     </div>

@@ -1,12 +1,11 @@
-import { Button, Label, Select, TextInput, Textarea } from "flowbite-react";
-import { useContext } from "react";
-import { AuthContext } from "../../Providers/AuthProviders";
+import { Button, Label, Select, TextInput, Textarea } from 'flowbite-react';
+import { useContext } from 'react';
+import { AuthContext } from '../../Providers/AuthProviders';
 import useTitles from './../../shared/useTitles';
-import Swal  from 'sweetalert2';
+import Swal from 'sweetalert2';
 const AddToys = () => {
-  
   useTitles('| Add Toys');
-  const { user } = useContext(AuthContext)
+  const { user } = useContext(AuthContext);
   console.log(user.email);
 
   const handleAddToysForm = (event) => {
@@ -14,7 +13,7 @@ const AddToys = () => {
     const form = event.target;
     const carName = form.carName.value;
     const soldBy = form.soldBy.value;
-    const quantity = form.quantity.value
+    const quantity = form.quantity.value;
     const category = form.category.value;
     const subCategory = form.subCategory.value;
     const made = form.made.value;
@@ -36,26 +35,25 @@ const AddToys = () => {
       image,
       description,
       postBy,
-      made
-    }
+      made,
+    };
     console.log(carInfo);
-    fetch(`http://localhost:5000/addToys`,{
+    fetch(`http://localhost:5000/addToys`, {
       method: 'POST',
       headers: {
-        'content-type': 'application/json'
+        'content-type': 'application/json',
       },
-      body: JSON.stringify(carInfo)
+      body: JSON.stringify(carInfo),
     })
-      .then(res => res.json())
-      .then(data => {
-        console.log(data)
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
         if (data?.insertedId) {
           Swal.fire('Added Items Successfully', 'Saved', 'success');
           form.reset();
         }
-      })
-      ;
-  }
+      });
+  };
   return (
     <div className='bg-neutral-200 px-2 md:px-6 py-4 md:py-6'>
       <form onSubmit={handleAddToysForm} className='flex flex-col gap-4'>
@@ -97,11 +95,11 @@ const AddToys = () => {
               <Label htmlFor='category' value='Select Category' />
             </div>
             <Select id='category' name='category' required={true}>
-              <option>super</option>
-              <option>racing</option>
-              <option>defance</option>
+              <option>Super Car</option>
+              <option>Racing Car</option>
+              <option>Defance Car</option>
             </Select>
-          </div> 
+          </div>
           {/* car category */}
           <div id='select'>
             <div className='mb-2 block'>
@@ -109,19 +107,19 @@ const AddToys = () => {
             </div>
             <Select id='subCategory' name='subCategory' required={true}>
               <optgroup label='Supercars'>
-                <option>american</option>
-                <option>german</option>
-                <option>hyper</option>
+                <option> American Supercars </option>
+                <option>German Supercars </option>
+                <option> Hyper Supercars</option>
               </optgroup>
               <optgroup label='Racing'>
-                <option>rally</option>
-                <option>dragracing</option>
-                <option>touring</option>
+                <option> Rally Racing </option>
+                <option> Drag Racing </option>
+                <option>Touring Racing </option>
               </optgroup>
               <optgroup label='Defense Force'>
-                <option>police</option>
-                <option>rab</option>
-                <option>fire service</option>
+                <option>Police</option>
+                <option> RAB</option>
+                <option>Fire Service</option>
               </optgroup>
             </Select>
           </div>

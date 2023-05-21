@@ -5,6 +5,7 @@ import useTitles from "../../shared/useTitles";
 import MyToysTableRow from "./MyToysTableRow";
 import Swal from "sweetalert2";
 
+
 const MyToys = () => {
   const { user } = useContext(AuthContext);
   const [myPostToys, setMyPostToys] = useState([])
@@ -15,6 +16,7 @@ const MyToys = () => {
     .then(data => {
       console.log(data)
       setMyPostToys(data)
+      
     })
   }, [])
   
