@@ -1,7 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import Main from './../layout/Main';
 import Home from './../pages/Home/Home';
-import AllToys from './../pages/Home/AllToys';
 import Login from './../pages/Login/Login';
 import Blog from './../pages/Blog/Blog';
 import MyToys from "../pages/PrivatePage/MyToys";
@@ -12,6 +11,7 @@ import ResetPass from "../pages/ResetPass/ResetPass";
 import PrivateRoutes from "../private/PrivateRoutes";
 import MoreDetails from "../pages/PrivatePage/MoreDetails";
 import EditToysData from "../pages/PrivatePage/EditToysData";
+import AllToys from "../pages/AllToys/AllToys";
 
 
 

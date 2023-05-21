@@ -1,9 +1,10 @@
 import { useContext, useEffect, useState } from "react";
-import useTitles from "../../shared/useTitles";
-import CarRow from "./CarRow";
+import CarRow from './CarRow'
 import { Table } from "flowbite-react";
 import Swal from 'sweetalert2';
-import { AuthContext } from "../../Providers/AuthProviders";
+import { AuthContext } from './../../Providers/AuthProviders';
+import useTitles from './../../shared/useTitles';
+
 
 const AllToys = () => {
   useTitles('| All Toys');

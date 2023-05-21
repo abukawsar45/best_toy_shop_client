@@ -41,7 +41,7 @@ const MyToysTableRow = ({ toy, handleRemove }) => {
           <Table.Cell>{price} taka</Table.Cell>
           <Table.Cell>{soldBy}</Table.Cell>
           <Table.Cell>{quantity}</Table.Cell>
-          <Table.Cell>{category}</Table.Cell>
+          <Table.Cell>{subCategory}</Table.Cell>
           <Table.Cell>{type}</Table.Cell>
 
           <Table.Cell>

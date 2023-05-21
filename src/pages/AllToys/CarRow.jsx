@@ -21,6 +21,7 @@ const CarCard = ({ toy, handleMoreBtn }) => {
     description,
     postBy,
     made,
+    
   } = toy || {};
   return (
     <>
