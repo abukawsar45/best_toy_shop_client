@@ -8,26 +8,30 @@ const Category = () => {
   };
 
   return (
-    <div>
-     
-      <div className='flex justify-center'>
-        <div
+    <div  data-aos="fade-up" className='md:flex justify-end'>
+      <Dropdown label='Sort By Date'>
+        <Dropdown.Item
           onClick={() => handleAssendingTab('assending')}
-          className={`tab px-6 py-2 ${
-            activeMode == 'assending' ? ' bg-sky-400 text-slate-50' : ''
+          className={`tab px-6 py-2  ${
+            activeMode == 'assending'
+              ? ' bg-sky-400 text-slate-50 hover:bg-sky-400'
+              : ''
           }`}
         >
-          Remote
-        </div>
-        <div
+          Assending
+        </Dropdown.Item>
+        <Dropdown.Item
           onClick={() => handleAssendingTab('dessending')}
-          className={`px-6 py-2 ${
-            activeMode == 'dessending' ? ' bg-sky-400 text-slate-50' : ''
+          className={`px-6 py-2  ${
+            activeMode == 'dessending'
+              ? ' bg-sky-400 text-slate-50 hover:bg-sky-400'
+              : ''
           }`}
         >
-          Offline
-        </div>
-      </div>
+          Dessending
+        </Dropdown.Item>
+      </Dropdown>
+     
     </div>
   );
 };

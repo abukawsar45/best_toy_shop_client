@@ -97,9 +97,9 @@ const AddToys = () => {
               <Label htmlFor='category' value='Select Category' />
             </div>
             <Select id='category' name='category' required={true}>
-              <option>Super</option>
-              <option>Racing</option>
-              <option>Defance</option>
+              <option>super</option>
+              <option>racing</option>
+              <option>defance</option>
             </Select>
           </div> 
           {/* car category */}
@@ -109,19 +109,19 @@ const AddToys = () => {
             </div>
             <Select id='subCategory' name='subCategory' required={true}>
               <optgroup label='Supercars'>
-                <option>American Supercars</option>
-                <option>German Supercars</option>
-                <option>Hypercars</option>
+                <option>american</option>
+                <option>german</option>
+                <option>hyper</option>
               </optgroup>
               <optgroup label='Racing'>
-                <option>Rally Cars</option>
-                <option>Drag Racing Cars</option>
-                <option>Touring Cars</option>
+                <option>rally</option>
+                <option>dragracing</option>
+                <option>touring</option>
               </optgroup>
               <optgroup label='Defense Force'>
-                <option>Police</option>
-                <option>RAB</option>
-                <option>Fire Service</option>
+                <option>police</option>
+                <option>rab</option>
+                <option>fire service</option>
               </optgroup>
             </Select>
           </div>

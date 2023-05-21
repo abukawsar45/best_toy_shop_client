@@ -1,7 +1,10 @@
 import { FaShippingFast,FaCartArrowDown,FaBlenderPhone,FaPauseCircle } from 'react-icons/fa';
 const SupportPart = () => {
   return (
-    <div className='flex justify-around bg-orange-500 w-full h-40'>
+    <div
+      data-aos='fade-up'
+      className='flex justify-around bg-orange-500 w-full h-40'
+    >
       <div className='text-slate-100 flex items-center py-2'>
         <FaShippingFast className='text-6xl mr-4' />
         <h3 className='font-bold text-2xl'>FAST SHIPPING</h3>

@@ -17,7 +17,10 @@ const MainCarousel = () => {
   console.log(imgCollection);
   
   return (
-    <div className='grid grid-cols-1 md:grid-cols-2 bg-zinc-600 px-2 md:px-4 gay-y-2  py-4 md:py-8'>
+    <div
+      data-aos='fade-up'
+      className='grid grid-cols-1 md:grid-cols-2 bg-zinc-600 px-2 md:px-4 gay-y-2  py-4 md:py-8'
+    >
       <div className='my-4 md:my-0'>
         <div className=''>
           <h3 className='text-6xl font-bold my-4 mx-auto text-white'>
@@ -28,7 +31,6 @@ const MainCarousel = () => {
           </p>
           <p className='text-gray-50 mt-4 md:mt-8'>
             <span>
-              
               Thousands of parents and kids are still reeling from the 2018
               closing of Toys”R”Us. While there’s no serviceable replacement for
               the physical toy store, the internet is bursting with a wide

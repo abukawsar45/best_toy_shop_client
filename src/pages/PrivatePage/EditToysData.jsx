@@ -6,11 +6,25 @@ import { useLoaderData } from 'react-router-dom';
 import useTitles from '../../shared/useTitles';
 
 const EditToysData = () => {
-  useTitles('| Edit Toys')
-  const { user } = useContext(AuthContext)
+  useTitles('| Edit Toys');
+  const { user } = useContext(AuthContext);
   const getData = useLoaderData();
-  console.log(getData)
-  const { _id,carName, soldBy, quantity, category, subCategory, price, type, rating, image, description, postBy, made } = getData;
+  console.log(getData);
+  const {
+    _id,
+    carName,
+    soldBy,
+    quantity,
+    category,
+    subCategory,
+    price,
+    type,
+    rating,
+    image,
+    description,
+    postBy,
+    made,
+  } = getData;
 
   const handleEditToysForm = (event) => {
     event.preventDefault();
@@ -55,9 +69,7 @@ const EditToysData = () => {
         if (data?.modifiedCount > 0) {
           Swal.fire('Updated Successfully', 'Saved', 'success');
           // form.reset();
-        }
-        else
-        {
+        } else {
           Swal.fire({
             title: 'Already Updated',
             showClass: {
@@ -125,9 +137,9 @@ const EditToysData = () => {
               defaultValue={category}
               required={true}
             >
-              <option>Super</option>
-              <option>Racing</option>
-              <option>Defance</option>
+              <option>super</option>
+              <option>racing</option>
+              <option>defance</option>
             </Select>
           </div>
           {/* car category */}
@@ -142,19 +154,19 @@ const EditToysData = () => {
               required={true}
             >
               <optgroup label='Supercars'>
-                <option>American Supercars</option>
-                <option>German Supercars</option>
-                <option>Hypercars</option>
+                <option>american</option>
+                <option>german</option>
+                <option>hyper</option>
               </optgroup>
               <optgroup label='Racing'>
-                <option>Rally Cars</option>
-                <option>Drag Racing Cars</option>
-                <option>Touring Cars</option>
+                <option>rally</option>
+                <option>dragracing</option>
+                <option>touring</option>
               </optgroup>
               <optgroup label='Defense Force'>
-                <option>Police</option>
-                <option>RAB</option>
-                <option>Fire Trucks</option>
+                <option>police</option>
+                <option>rab</option>
+                <option>fire service</option>
               </optgroup>
             </Select>
           </div>
