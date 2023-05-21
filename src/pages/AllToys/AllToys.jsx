@@ -52,7 +52,7 @@ const AllToys = () => {
             Quantiy
           </Table.HeadCell>
           <Table.HeadCell className='font-sans text-violet-600'>
-            Category
+            Sub Category
           </Table.HeadCell>
           <Table.HeadCell className='font-sans text-violet-600'>
             type

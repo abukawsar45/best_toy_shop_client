@@ -38,7 +38,7 @@ const CarCard = ({ toy, handleMoreBtn }) => {
 
         <Table.Cell>
           <Link to={`/moreDetails/${_id}`}>
-            <Button onClick={handleMoreBtn}>More</Button>
+            <Button onClick={handleMoreBtn}>Details</Button>
           </Link>
         </Table.Cell>
       </Table.Row>
