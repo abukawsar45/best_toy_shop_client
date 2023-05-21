@@ -13,7 +13,7 @@ const AllToys = () => {
   
     const handleSearchBox = (e) => {
       e.preventDefault();
-      const searchValue = e.search.target.value;
+      const searchValue = e.target.search.value;
       fetch(`https://y-umber-three.vercel.app/Carnameby/${searchValue}`)
         .then((res) => res.json())
         .then((data) => {
