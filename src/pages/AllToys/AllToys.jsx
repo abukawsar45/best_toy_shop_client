@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import CarRow from './CarRow'
-import { Table } from "flowbite-react";
+import { Table,Button } from "flowbite-react";
 import Swal from 'sweetalert2';
 import { AuthContext } from './../../Providers/AuthProviders';
 import useTitles from './../../shared/useTitles';
@@ -11,7 +11,16 @@ const AllToys = () => {
   const {user} =useContext(AuthContext)
   const [toysData, setToysData] = useState([]);
   
-  
+    const handleSearchBox = (e) => {
+      e.preventDefault();
+      const searchValue = e.search.target.value;
+      fetch(`https://y-umber-three.vercel.app/Carnameby/${searchValue}`)
+        .then((res) => res.json())
+        .then((data) => {
+          setToysData(data);
+          console.log(data);
+        });
+    };
   const handleMoreBtn = () => {
     if (!user) {
       return ( Swal.fire(
@@ -35,9 +44,15 @@ const AllToys = () => {
 
   
   return (
-
     <div>
-      <div></div>
+      <div className='mx-auto'>
+        <div>
+          <form className='flex' onSubmit={handleSearchBox}>
+            <input type='text' name='search' className='w-20' />
+            <Button type='submit'>Search</Button>
+          </form>
+        </div>
+      </div>
       <Table striped={true}>
         <Table.Head>
           <Table.HeadCell className='font-sans text-violet-600'>
