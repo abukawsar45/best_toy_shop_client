@@ -20,7 +20,7 @@ const { user } = useContext(AuthContext);
 const [myPostToys, setMyPostToys] = useState([]);
 useTitles('| My Toys');
 useEffect(() => {
-  fetch(`http://localhost:5000/myToys/${user?.email}?sortBy=${activeMode}`)
+  fetch(`https://y-umber-three.vercel.app/myToys/${user?.email}?sortBy=${activeMode}`)
     .then((res) => res.json())
     .then((data) => {
       console.log(data);
@@ -44,7 +44,7 @@ useEffect(() => {
       if (result.isConfirmed)
       {
         
-        fetch(`http://localhost:5000/myAllToys/${id}`, {
+        fetch(`https://y-umber-three.vercel.app/myAllToys/${id}`, {
           method: 'DELETE',
         })
           .then((res) => res.json())

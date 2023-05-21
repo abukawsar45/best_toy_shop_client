@@ -64,7 +64,7 @@ const router = createBrowserRouter([
       {
         path: '/myAllToys/:id',
         element: <PrivateRoutes><EditToysData /></PrivateRoutes>,
-        loader: ({ params }) => fetch(`http://localhost:5000/alltoys/${params.id}`),
+        loader: ({ params }) => fetch(`https://y-umber-three.vercel.app/alltoys/${params.id}`),
       },
 
       {
@@ -75,7 +75,7 @@ const router = createBrowserRouter([
           </PrivateRoutes>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/alltoys/${params.id}`),
+          fetch(`https://y-umber-three.vercel.app/alltoys/${params.id}`),
       },
       {
         path: '/reset_password',

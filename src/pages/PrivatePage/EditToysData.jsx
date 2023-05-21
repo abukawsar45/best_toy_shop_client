@@ -42,7 +42,7 @@ const EditToysData = () => {
       made,
     };
     console.log(updateInfo);
-    fetch(`http://localhost:5000/myToys/${_id}`, {
+    fetch(`https://y-umber-three.vercel.app/myToys/${_id}`, {
       method: 'PUT',
       headers: {
         'content-type': 'application/json',

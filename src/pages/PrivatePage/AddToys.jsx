@@ -38,7 +38,7 @@ const AddToys = () => {
       made,
     };
     console.log(carInfo);
-    fetch(`http://localhost:5000/addToys`, {
+    fetch(`https://y-umber-three.vercel.app/addToys`, {
       method: 'POST',
       headers: {
         'content-type': 'application/json',

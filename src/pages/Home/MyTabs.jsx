@@ -17,7 +17,7 @@ const MyTabs = () => {
   
   
   useEffect(() => {
-    fetch(`http://localhost:5000/subcategoryName/${toysData}`)
+    fetch(`https://y-umber-three.vercel.app/subcategoryName/${toysData}`)
       .then((res) => res.json())
       .then((data) => {
         // console.log(data);
