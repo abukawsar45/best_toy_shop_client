@@ -1,39 +1,38 @@
-import { useContext, useEffect, useState } from "react";
-import { AuthContext } from "../../Providers/AuthProviders";
-import { Dropdown, Table } from "flowbite-react";
-import useTitles from "../../shared/useTitles";
-import MyToysTableRow from "./MyToysTableRow";
-import Swal from "sweetalert2";
-// 
+import { useContext, useEffect, useState } from 'react';
+import { AuthContext } from '../../Providers/AuthProviders';
+import { Dropdown, Table } from 'flowbite-react';
+import useTitles from '../../shared/useTitles';
+import MyToysTableRow from './MyToysTableRow';
+import Swal from 'sweetalert2';
+//
 
-// 
+//
 
 const MyToys = () => {
-
   //
 
-const [activeMode, setActiveMode] = useState('ascending');
-const handleAssendingTab = (tabName) => {
-  setActiveMode(tabName);
-};
+  const [activeMode, setActiveMode] = useState('ascending');
+  const handleAssendingTab = (tabName) => {
+    setActiveMode(tabName);
+  };
 
-const { user } = useContext(AuthContext);
-const [myPostToys, setMyPostToys] = useState([]);
-useTitles('| My Toys');
-useEffect(() => {
-  fetch(
-    `https://y-umber-three.vercel.app/myToys/${user?.email}?sortBy=${activeMode}`
-  )
-    .then((res) => res.json())
-    .then((data) => {
-      // console.log(data);
-      setMyPostToys(data);
-    })
-    .catch((error) => {
-      // console.error(error);
-    });
-}, [activeMode]);  
-  
+  const { user } = useContext(AuthContext);
+  const [myPostToys, setMyPostToys] = useState([]);
+  useTitles('| My Toys');
+  useEffect(() => {
+    fetch(
+      `https://y-umber-three.vercel.app/myToys/${user?.email}?sortBy=${activeMode}`
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        // //console.log(data);
+        setMyPostToys(data);
+      })
+      .catch((error) => {
+        // //console.error(error);
+      });
+  }, [activeMode]);
+
   const handleRemove = (id) => {
     Swal.fire({
       title: 'Are you sure delete this item?',
@@ -44,34 +43,27 @@ useEffect(() => {
       cancelButtonColor: '#d33',
       confirmButtonText: 'Yes, delete it!',
     }).then((result) => {
-      if (result.isConfirmed)
-      {
-        
+      if (result.isConfirmed) {
         fetch(`https://y-umber-three.vercel.app/myAllToys/${id}`, {
           method: 'DELETE',
         })
           .then((res) => res.json())
           .then((data) => {
-            // console.log(data);
-            // console.log(id);
+            // //console.log(data);
+            // //console.log(id);
             const remaining = myPostToys.filter((toy) => toy._id !== id);
             setMyPostToys(remaining);
             if (data.deletedCount > 0) {
               Swal.fire('Deleted!', 'Your file has been deleted.', 'success');
             }
           });
-      
       }
-          
     });
-  }
-  
-
+  };
 
   return (
     <div>
       <div>
-        
         <div className='md:flex justify-end  '>
           <Dropdown label='Sort By Date'>
             <Dropdown.Item

@@ -13,8 +13,8 @@ import { Link } from "react-router-dom";
 const FooterSection = () => {
   return (
     <div className=' '>
-      <Footer container={true} className='mx-auto bg-slate-200'>
-        <div className='w-full mx-auto'>
+      <Footer container={true} className='mx-auto bg-slate-800 '>
+        <div className='w-full py-5 md:py-9 lg:py-12 px-4 md:px-7 lg:px-9 mx-auto bg-slate-900'>
           <div>
             <div className='grid grid-cols-1  mt-4 md:mt-0 md:grid-cols-5'>
               <div className=' my-4 md:my-0 justify-start md:items-center'>
@@ -67,8 +67,8 @@ const FooterSection = () => {
                   </Footer.Link>
                   <Footer.Link href='#'>
                     <span className='font-bold'>Branch:</span> Uttara 1
-                    <br />
-                    <br />
+                  </Footer.Link>
+                  <Footer.Link href='#'>
                     Dhaka,Bangladesh
                   </Footer.Link>
                 </Footer.LinkGroup>

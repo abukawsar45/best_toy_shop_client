@@ -9,7 +9,7 @@ const EditToysData = () => {
   useTitles('| Edit Toys');
   const { user } = useContext(AuthContext);
   const getData = useLoaderData();
-  console.log(getData);
+  //console.log(getData);
   const {
     _id,
     carName,
@@ -55,7 +55,7 @@ const EditToysData = () => {
       postBy,
       made,
     };
-    console.log(updateInfo);
+    //console.log(updateInfo);
     fetch(`https://y-umber-three.vercel.app/myToys/${_id}`, {
       method: 'PUT',
       headers: {
@@ -65,7 +65,7 @@ const EditToysData = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        //console.log(data);
         if (data?.modifiedCount > 0) {
           Swal.fire('Updated Successfully', 'Saved', 'success');
           // form.reset();

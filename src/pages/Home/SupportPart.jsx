@@ -8,7 +8,7 @@ const SupportPart = () => {
   return (
     <div
       data-aos='fade-up'
-      className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 bg-orange-500 w-full py-4 px-4 md:py-5 h-auto'
+      className='my-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 bg-orange-500 w-full py-4 px-4 md:py-5 h-auto'
     >
       <div className='text-slate-100 flex items-center  py-2'>
         <FaShippingFast className='text-6xl mr-4' />

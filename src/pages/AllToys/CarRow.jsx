@@ -1,12 +1,11 @@
 // import { Button, Card } from 'flowbite-react';
 // import { Link } from 'react-router-dom';
 
-import { Button, Table } from "flowbite-react";
-import { Link } from "react-router-dom";
-
+import { Button, Table } from 'flowbite-react';
+import { Link } from 'react-router-dom';
 
 const CarCard = ({ toy, handleMoreBtn }) => {
-  // console.log({toy});
+  // //console.log({toy});
   const {
     _id,
     carName,
@@ -21,7 +20,6 @@ const CarCard = ({ toy, handleMoreBtn }) => {
     description,
     postBy,
     made,
-    
   } = toy || {};
   return (
     <>
@@ -43,7 +41,6 @@ const CarCard = ({ toy, handleMoreBtn }) => {
         </Table.Cell>
       </Table.Row>
     </>
-   
   );
 };
 

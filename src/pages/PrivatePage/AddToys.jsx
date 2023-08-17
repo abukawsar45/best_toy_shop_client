@@ -6,7 +6,7 @@ import Swal from 'sweetalert2';
 const AddToys = () => {
   useTitles('| Add Toys');
   const { user } = useContext(AuthContext);
-  console.log(user.email);
+  //console.log(user.email);
 
   const handleAddToysForm = (event) => {
     event.preventDefault();
@@ -37,7 +37,7 @@ const AddToys = () => {
       postBy,
       made,
     };
-    console.log(carInfo);
+    //console.log(carInfo);
     fetch(`https://y-umber-three.vercel.app/addToys`, {
       method: 'POST',
       headers: {
@@ -47,7 +47,7 @@ const AddToys = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        //console.log(data);
         if (data?.insertedId) {
           Swal.fire('Added Items Successfully', 'Saved', 'success');
           form.reset();

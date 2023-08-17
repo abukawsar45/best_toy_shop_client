@@ -1,59 +1,57 @@
-import { Button, Label, TextInput } from "flowbite-react";
-import { useContext, useState } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
-import { AuthContext } from "../../Providers/AuthProviders";
-import useTitles from "../../shared/useTitles";
+import { Button, Label, TextInput } from 'flowbite-react';
+import { useContext, useState } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../Providers/AuthProviders';
+import useTitles from '../../shared/useTitles';
 
 const Login = () => {
   useTitles('| Login');
 
-   const [error, setError] = useState('');
-   const [success, setSuccess] = useState('');
+  const [error, setError] = useState('');
+  const [success, setSuccess] = useState('');
 
   const location = useLocation();
   const navigate = useNavigate();
   const from = location.state?.from?.pathname || '/';
 
-   const { loginWithGoogle, loginWithEmailAndPassword } =
-     useContext(AuthContext);
+  const { loginWithGoogle, loginWithEmailAndPassword } =
+    useContext(AuthContext);
 
-   const handleLogin = (event) => {
-     event.preventDefault();
-     const form = event.target;
-     const email = form.email.value;
-     const password = form.password.value;
-     console.log(email, password);
+  const handleLogin = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    //console.log(email, password);
 
-        loginWithEmailAndPassword(email, password)
-          .then((result) => {
-            const loggedUser = result.user;
+    loginWithEmailAndPassword(email, password)
+      .then((result) => {
+        const loggedUser = result.user;
 
-            setError('');
-            setSuccess('login successfull');
-            form.reset();
-            navigate(from);
-          })
-          .catch((error) => {
-            setSuccess('');
-            setError(error.message);
-          });
-      };
-     const handleGoogleLogin = () => {
-       loginWithGoogle()
-         .then((result) => {
-           const loggedUser = result.user;
+        setError('');
+        setSuccess('login successfull');
+        form.reset();
+        navigate(from);
+      })
+      .catch((error) => {
+        setSuccess('');
+        setError(error.message);
+      });
+  };
+  const handleGoogleLogin = () => {
+    loginWithGoogle()
+      .then((result) => {
+        const loggedUser = result.user;
 
-           setError('');
-           setSuccess('Login successful');
-           navigate(from);
-         })
-         .catch((err) => {
-           setSuccess('');
-           setError(err.message);
-         });
-     };
-
-
+        setError('');
+        setSuccess('Login successful');
+        navigate(from);
+      })
+      .catch((err) => {
+        setSuccess('');
+        setError(err.message);
+      });
+  };
 
   return (
     <div>
@@ -99,9 +97,9 @@ const Login = () => {
               </Link>
             </span>
             <div>
-                  <p className='text-lime-400'>{success ? success : ''}</p>
-                  <p className='text-red-600'>{error ? error : ''}</p>
-                </div>
+              <p className='text-lime-400'>{success ? success : ''}</p>
+              <p className='text-red-600'>{error ? error : ''}</p>
+            </div>
 
             <Button type='submit'>Login</Button>
             <div className='label'>

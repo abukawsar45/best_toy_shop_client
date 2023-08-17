@@ -1,19 +1,17 @@
-import { Button, Label, Modal, TextInput } from "flowbite-react";
-import React, { useContext, useState } from "react";
-import { AuthContext } from "../../Providers/AuthProviders";
-import { Link } from "react-router-dom";
+import { Button, Label, Modal, TextInput } from 'flowbite-react';
+import React, { useContext, useState } from 'react';
+import { AuthContext } from '../../Providers/AuthProviders';
+import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
-import useTitles from "../../shared/useTitles";
+import useTitles from '../../shared/useTitles';
 
 const ResetPass = () => {
-
   useTitles('| Reset Password');
   const [showModal, setShowModal] = useState(false);
   const [error, setError] = useState('');
 
+  const { resetPassword } = useContext(AuthContext);
 
-  const {resetPassword} = useContext(AuthContext)
-  
   const handleModalToggle = () => {
     setShowModal(!showModal);
   };
@@ -25,13 +23,13 @@ const ResetPass = () => {
     event.preventDefault();
     const form = event.target;
     const email = form.email.value;
-    console.log(email);
+    //console.log(email);
     resetPassword(email)
       .then(() => {
         setError('');
-       Swal.fire('Please Check Your Email');
+        Swal.fire('Please Check Your Email');
         form.reset();
-         setShowModal(!showModal);
+        setShowModal(!showModal);
       })
       .catch((err) => {
         setError('');

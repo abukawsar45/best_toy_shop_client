@@ -1,10 +1,10 @@
 import { Button, Card } from 'flowbite-react';
 import { Link } from 'react-router-dom';
 
-
 const SingleCarInfo = ({ toy, handleMoreBtn }) => {
-  console.log(toy);
-  const { _id, image, carName, price, subCategory, type, quantity, rating } = toy;
+  // console.log(toy);
+  const { _id, image, carName, price, subCategory, type, quantity, rating } =
+    toy;
 
   return (
     <div className=''>

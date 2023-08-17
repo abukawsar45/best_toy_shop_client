@@ -5,64 +5,58 @@ import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from './../../Providers/AuthProviders';
 import useTitles from '../../shared/useTitles';
 
-
-
 const Register = () => {
   useTitles('| Register');
 
-    const navigate = useNavigate();
-    const from = '/';
+  const navigate = useNavigate();
+  const from = '/';
 
   const [success, setSuccess] = useState('');
   const [error, setError] = useState('');
-  const { signUpWithEmail, loginWithGoogle, updateUserProfile,user,setUser } =
+  const { signUpWithEmail, loginWithGoogle, updateUserProfile, user, setUser } =
     useContext(AuthContext);
 
-  console.log(user);
-  
-  
+  //console.log(user);
 
-  // console.log(signUpWithEmail);
-   const handleRegister = (event) => {
-     event.preventDefault();
-     const form = event.target;
-     const name = form.name.value;
-     const photo = form.url.value;
-     const email = form.email.value;
-     const password = form.password.value;
-    //  console.log(name, email, password, photo);
+  // //console.log(signUpWithEmail);
+  const handleRegister = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const name = form.name.value;
+    const photo = form.url.value;
+    const email = form.email.value;
+    const password = form.password.value;
+    //  //console.log(name, email, password, photo);
 
-        signUpWithEmail(email, password)
-          .then((result) => {
-            const loggedUser = result.user;
-            setError('');
-            setSuccess('Login Successfull');
-            form.reset();
-              setUser({ ...user, displayName: name, photoURL: photo });
-            updateUserProfile(name,photo);
-            console.log(updateUserProfile)
-           navigate(from);
-        
-          })
-          .catch((error) => {
-            setSuccess('');
-            setError(error.message);
-          });
-      };
-      const handleGoogleLogin = () => {
-        loginWithGoogle()
-          .then((result) => {
-            const loggedUser = result.user;
-            setError('');
-            setSuccess('Login Successful');
-            navigate(from);
-          })
-          .catch((err) => {
-            setSuccess('');
-            setError(err.message);
-          });
-      };
-
+    signUpWithEmail(email, password)
+      .then((result) => {
+        const loggedUser = result.user;
+        setError('');
+        setSuccess('Login Successfull');
+        form.reset();
+        setUser({ ...user, displayName: name, photoURL: photo });
+        updateUserProfile(name, photo);
+        //console.log(updateUserProfile)
+        navigate(from);
+      })
+      .catch((error) => {
+        setSuccess('');
+        setError(error.message);
+      });
+  };
+  const handleGoogleLogin = () => {
+    loginWithGoogle()
+      .then((result) => {
+        const loggedUser = result.user;
+        setError('');
+        setSuccess('Login Successful');
+        navigate(from);
+      })
+      .catch((err) => {
+        setSuccess('');
+        setError(err.message);
+      });
+  };
 
   return (
     <div>

@@ -1,21 +1,19 @@
-
 import { Carousel } from 'flowbite-react';
 import { useEffect, useState } from 'react';
- 
 
 const MainCarousel = () => {
   const [imgCollection, setImgCollection] = useState([]);
-  
+
   useEffect(() => {
     fetch('https://y-umber-three.vercel.app/alltoys')
       .then((res) => res.json())
       .then((data) => {
-        // console.log(data);
+        // //console.log(data);
         setImgCollection(data);
       });
   }, []);
-  console.log(imgCollection);
-  
+  //console.log(imgCollection);
+
   return (
     <div
       data-aos='fade-up'

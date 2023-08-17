@@ -1,15 +1,28 @@
-import { Button, Card } from "flowbite-react";
-import { useEffect, useState } from "react";
-import { useLoaderData } from "react-router-dom";
+import { Button, Card } from 'flowbite-react';
+import { useEffect, useState } from 'react';
+import { useLoaderData } from 'react-router-dom';
 import ReactStarsRating from 'react-awesome-stars-rating';
-import useTitles from "../../shared/useTitles";
+import useTitles from '../../shared/useTitles';
 
 const MoreDetails = () => {
   useTitles('| Toy Details');
   const toyData = useLoaderData();
-  console.log({toyData})
-  const { _id, carName, soldBy, quantity, category, subCategory, price, type, rating, image, description, postBy, made} = toyData || [];
-
+  //console.log({toyData})
+  const {
+    _id,
+    carName,
+    soldBy,
+    quantity,
+    category,
+    subCategory,
+    price,
+    type,
+    rating,
+    image,
+    description,
+    postBy,
+    made,
+  } = toyData || [];
 
   return (
     <div>
@@ -61,8 +74,8 @@ const MoreDetails = () => {
             </p>
             <p className='text-xl md:text-2xl flex  mb-2 md:mb-0 text-red-700'>
               <div className='flex items-center'>
-                <small> Rating</small> : &#160; <ReactStarsRating  value={rating} className="flex flex-row " />
-                
+                <small> Rating</small> : &#160;{' '}
+                <ReactStarsRating value={rating} className='flex flex-row ' />
               </div>
             </p>
           </div>

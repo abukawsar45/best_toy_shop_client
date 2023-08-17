@@ -1,33 +1,29 @@
-import { Avatar, Button, Dropdown, Navbar, Tooltip } from "flowbite-react";
-import { useContext } from "react";
+import { Avatar, Button, Dropdown, Navbar, Tooltip } from 'flowbite-react';
+import { useContext } from 'react';
 import { useSpring, animated } from 'react-spring';
-import { AuthContext } from "../Providers/AuthProviders";
-import ActiveLink from "../pages/ActiveLink/ActiveLink";
-import { Link } from "react-router-dom";
-
+import { AuthContext } from '../Providers/AuthProviders';
+import ActiveLink from '../pages/ActiveLink/ActiveLink';
+import { Link } from 'react-router-dom';
 
 const Navber = () => {
-
   const { user, logout } = useContext(AuthContext);
-    const Username = user?.displayName;
+  const Username = user?.displayName;
   const image = user?.photoURL;
-  console.log(image)
+  //console.log(image)
 
   const handleLogout = () => {
     logout()
-    .then(() => {})
-    .catch(err => {
-        // console.error(err.message);
-    })
-  }
+      .then(() => {})
+      .catch((err) => {
+        // //console.error(err.message);
+      });
+  };
 
-   const animationProps = useSpring({
-     from: { transform: 'scale(0)' },
-     to: { transform: 'scale(1)' },
-     config: { tension: 200, friction: 10 },
-   });
-  
-
+  const animationProps = useSpring({
+    from: { transform: 'scale(0)' },
+    to: { transform: 'scale(1)' },
+    config: { tension: 200, friction: 10 },
+  });
 
   return (
     <>
@@ -77,14 +73,21 @@ const Navber = () => {
         </div>
         <Navbar.Collapse>
           <div className='flex flex-col md:flex-row gap-4 md:items-center'>
-            <ActiveLink className=''  to='/'>Home</ActiveLink>
-            <ActiveLink  className='' to='/allToys'>All Toys</ActiveLink>
-            <ActiveLink  className='' to='/blog'>Blogs</ActiveLink>
+            <ActiveLink className='' to='/'>
+              Home
+            </ActiveLink>
+            <ActiveLink className='' to='/allToys'>
+              All Toys
+            </ActiveLink>
             {/*  */}
             {user && (
               <>
-                <ActiveLink  className='' to='/myToys'>My Toys</ActiveLink>
-                <ActiveLink  className='' to='/addToys'>Add Toys</ActiveLink>
+                <ActiveLink className='' to='/myToys'>
+                  My Toys
+                </ActiveLink>
+                <ActiveLink className='' to='/addToys'>
+                  Add Toys
+                </ActiveLink>
                 <Button
                   className='w-20'
                   onClick={handleLogout}

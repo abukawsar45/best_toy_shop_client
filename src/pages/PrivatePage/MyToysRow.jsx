@@ -1,7 +1,7 @@
 // import React from 'react';
 
 // const MyToysRow = ({ toy, handleMoreBtn }) => {
-//   console.log({ toy });
+//   //console.log({ toy });
 //   const {
 //     _id,
 //     carName,

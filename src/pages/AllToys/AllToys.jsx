@@ -1,55 +1,62 @@
-import { useContext, useEffect, useState } from "react";
-import CarRow from './CarRow'
-import { Table,Button } from "flowbite-react";
+import { useContext, useEffect, useState } from 'react';
+import CarRow from './CarRow';
+import { Table, Button } from 'flowbite-react';
 import Swal from 'sweetalert2';
 import { AuthContext } from './../../Providers/AuthProviders';
 import useTitles from './../../shared/useTitles';
 
-
 const AllToys = () => {
   useTitles('| All Toys');
-  const {user} =useContext(AuthContext)
+  const { user } = useContext(AuthContext);
   const [toysData, setToysData] = useState([]);
-  
-    const handleSearchBox = (e) => {
-      e.preventDefault();
-      const searchValue = e.target.search.value;
-      fetch(`https://y-umber-three.vercel.app/Carnameby/${searchValue}`)
-        .then((res) => res.json())
-        .then((data) => {
-          setToysData(data);
-          console.log(data);
-        });
-    };
+
+  const handleSearchBox = (e) => {
+    e.preventDefault();
+    const searchValue = e.target.search.value;
+    fetch(`https://y-umber-three.vercel.app/Carnameby/${searchValue}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setToysData(data);
+        //console.log(data);
+      });
+  };
   const handleMoreBtn = () => {
     if (!user) {
-      return ( Swal.fire(
+      return Swal.fire(
         'Without a login?',
         'You can not visit the single toy details page',
         'error'
-        ))
-      }
-  }
+      );
+    }
+  };
 
   useEffect(() => {
     fetch('https://y-umber-three.vercel.app/allToysWithLimit')
       .then((res) => res.json())
       .then((data) => {
-        // console.log(data);
+        // //console.log(data);
         setToysData(data);
       });
-  }, [])
-  // console.log(toysData)
-  
+  }, []);
+  // //console.log(toysData)
 
-  
   return (
     <div>
       <div className='mx-auto'>
-        <div>
-          <form className='flex' onSubmit={handleSearchBox}>
-            <input type='text' name='search' className='w-20' />
-            <Button type='submit'>Search</Button>
+        <div className='my-8'>
+          <form className='text-center' onSubmit={handleSearchBox}>
+            <input
+              type='text'
+              name='search'
+              placeholder='Search your toys'
+              className='  rounded-s-full px-4 md:px-16 py-2 text-black  border-2 border-slate-100 custom-josefin text-center  w-6/12'
+            />
+            <button
+              type='submit'
+              className='bg-black  text-white rounded-full -ml-8 px-4 md:px-16 py-2 border-2 border-slate-100 hover:border-lime-400 custom-josefin text-center'
+            >
+              Search
+            </button>
           </form>
         </div>
       </div>
